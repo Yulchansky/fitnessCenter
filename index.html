@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Главная - FITNESS</title>
+</head>
+<head th:insert="blocks/head :: head"></head>
+<body style="background-color: #a9e6f0">
+<div th:insert="blocks/nav :: nav"></div>
+<header class="text-center text-white masthead"
+        style="background: url(&quot;/img/bg.jpg&quot;) center / cover;">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</header>
+<section class="text-center  testimonials">
+    <div class="container">
+        <h2 class="mb-5">Тренажеры</h2>
+        <div th:if="${role == 'MANAGER'}" class="row mb-5" style="margin: 10px -12px;">
+            <div class="col-lg-4 col-xl-12">
+                <a class="btn btn-primary" role="button" href="/trainers/add">Добавить тренажер</a>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 10px;">
+            <div th:each="trainer : ${trainers}" class="col-4">
+                <div class="mx-auto testimonial-item mb-5 mb-lg-0">
+                    <img class="img-fluid mb-3" th:src="'/img/' + ${trainer.file}">
+                    <h5 th:text="${trainer.name}"></h5>
+                </div>
+                <p class="font-weight-light mb-0" style="text-align: left;font-size: 20px;">Производитель: <span
+                        th:text="${trainer.producer}"></span></p>
+                <p class="font-weight-light mb-0" style="text-align: left;font-size: 20px;">Страна производства: <span
+                        th:text="${trainer.country}"></span> лет</p>
+                <p class="font-weight-light mb-0" style="text-align: left;font-size: 20px;">Категория мышц: <span
+                        th:text="${trainer.muscle}"></span></p>
+                <p class="font-weight-light mb-0" style="text-align: left;font-size: 20px;">Оптимальное количество
+                    подходов: <span
+                            th:text="${trainer.optimal}"></span></p>
+                <p class="font-weight-light mb-0" style="text-align: left;font-size: 20px;">Максимальный вес: <span
+                        th:text="${trainer.max}"></span></p>
+                <div th:if="${role == 'MANAGER'}" class="col mt-2" style="max-width: 270px;">
+                    <a class="btn btn-success" role="button" style="margin-right: 15px;"
+                       th:href="'/trainers/edit/' + ${trainer.id}">Редактировать</a>
+                    <a class="btn btn-danger" role="button" th:href="'/trainers/delete/' + ${trainer.id}">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:insert="blocks/footer :: footer" class=" footer"></footer>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bs-init.js"></script>
+</body>
+
+</html>

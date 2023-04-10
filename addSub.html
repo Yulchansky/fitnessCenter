@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Добавить прайс - FITNESS</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body style="background-color: #a9e6f0">
+<div th:insert="blocks/nav :: nav"></div>
+<section class="text-center testimonials">
+    <div class="container">
+        <div th:if="${message}" class="alert alert-warning" role="alert">
+            <strong th:text="${message}"></strong>
+        </div>
+        <h2 class="mb-5">Добавить прайс</h2>
+        <form action="/subs/add" method="post" enctype="multipart/form-data">
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <div class="row d-xl-flex align-items-xl-center">
+                        <div class="col-xl-4"><span>Название</span></div>
+                        <div class="col-xl-8"><input class="form-control" type="text" name="name" required=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <div class="row d-xl-flex align-items-xl-center">
+                        <div class="col-xl-4"><span>Цена</span></div>
+                        <div class="col-xl-8"><input class="form-control" type="number" name="price" min="0" max="500"
+                                                     step="1" value="0" required=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <div class="row d-xl-flex align-items-xl-center">
+                        <div class="col-xl-4"><span>Срок действия (месяцев)</span></div>
+                        <div class="col-xl-8"><input class="form-control" type="number" name="term" value="1" min="1"
+                                                     max="60" step="1" required=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <div class="row d-xl-flex align-items-xl-center">
+                        <div class="col-xl-4"><span>Приостановка подписки (дней)</span></div>
+                        <div class="col-xl-8"><input class="form-control" type="number" name="pause" value="1" min="1"
+                                                     max="60" step="1" required=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <div class="row d-xl-flex align-items-xl-center">
+                        <div class="col-xl-4"><span>Время посещения с</span></div>
+                        <div class="col-xl-3"><input class="form-control" type="number" name="start_by" min="0" max="23"
+                                                     step="1" value="0" required=""></div>
+                        <div class="col-xl-2"><span>до</span></div>
+                        <div class="col-xl-3"><input class="form-control" type="number" name="before" min="0" max="23"
+                                                     step="1" value="0" required=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <div class="row d-xl-flex align-items-xl-center">
+                        <div class="col-xl-4"><span>Изображение</span></div>
+                        <div class="col-xl-8"><input class="form-control" type="file" accept="image/*" name="file"
+                                                     required=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <div class="row d-xl-flex align-items-xl-center">
+                        <div class="col-xl-4"><span>Описание (опционально)</span></div>
+                        <div class="col-xl-8"><input class="form-control" type="text" name="description"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-xl-flex" style="margin-bottom: 10px;">
+                <div class="col d-xl-flex justify-content-xl-start">
+                    <button class="btn btn-primary" type="submit" style="margin-right: 10px;">Добавить</button>
+                    <button class="btn btn-dark" type="reset">Очистить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<footer th:insert="blocks/footer :: footer" class="footer"></footer>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bs-init.js"></script>
+</body>
+
+</html>

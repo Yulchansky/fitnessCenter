@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Регистрация - FITNESS</title>
+</head>
+<head th:insert="blocks/head :: head"></head>
+<body style="background-color: #a9e6f0">
+<div th:insert="blocks/nav :: nav"></div>
+<section class="text-center  testimonials">
+    <div class="container">
+        <div th:if="${message}" class="alert alert-warning" role="alert">
+            <strong th:text="${message}"></strong>
+        </div>
+        <h2 class="mb-5">Добро пожаловать!</h2>
+        <form action="/reg" method="post">
+            <div class="d-xl-flex justify-content-xl-center" style="margin-bottom: 10px;">
+                <div class="row" style="max-width: 500px;">
+                    <div class="col">
+                        <p style="font-size: 20px;margin-bottom: 0px;">Логин</p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-xl-flex justify-content-xl-center" style="margin-bottom: 10px;">
+                <div class="row d-xl-flex" style="max-width: 500px;">
+                    <div class="col"><input class="form-control" type="text" name="username" required="">
+                    </div>
+                </div>
+            </div>
+            <div class="d-xl-flex justify-content-xl-center" style="margin-bottom: 10px;">
+                <div class="row" style="max-width: 500px;">
+                    <div class="col">
+                        <p style="font-size: 20px;margin-bottom: 0px;">Пароль</p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-xl-flex justify-content-xl-center" style="margin-bottom: 10px;">
+                <div class="row d-xl-flex" style="max-width: 500px;">
+                    <div class="col"><input class="form-control" type="password" name="password" required="" >
+                    </div>
+                </div>
+            </div>
+            <div class="d-xl-flex justify-content-xl-center" style="margin-bottom: 10px;">
+                <div class="row d-xl-flex" style="max-width: 500px;">
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="d-xl-flex justify-content-xl-center" style="margin-bottom: 10px;margin-top: 10px;">
+        <div class="row" style="max-width: 500px;">
+            <div class="col"><a href="/login">Войти</a></div>
+        </div>
+    </div>
+</section>
+<footer th:insert="blocks/footer :: footer" class=" footer"></footer>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bs-init.js"></script>
+</body>
+
+</html>
